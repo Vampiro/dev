@@ -115,4 +115,16 @@ This changes the `start` script in `package.json`. Change `start` back to this:
 "start": "react-scripts start",
 ```
 
-At this point if you run `npm run dev`, your app should come up in Electron. If you get an error saying `'electron' is not recognized as an internal or external command`, try `rm -rf node_modules` and `npm install` again. Unsure why this problem happens, but I typically blame the combination of Windows + VS Code + Git Bash.
+At this point if you run your app in Electron in dev mode with:
+
+```
+npm run dev
+```
+
+If you get an error saying `'electron' is not recognized as an internal or external command`, you can try re-installing your `node_modules`. Unsure why this problem happens, but it may be a problem with Windows + VS Code + Git Bash.
+
+```bash
+rm -rf node_modules
+npm install
+npm run dev
+```
