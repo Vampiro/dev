@@ -38,20 +38,11 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Community',
+          title: 'Me',
           items: [
             {
               label: 'Twitter',
               href: `https://twitter.com/${twitter}`,
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: 'blog',
             },
             {
               label: 'GitHub',
@@ -60,7 +51,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Rob Docs. Built with Docusaurus.`,
     },
   },
   presets: [
