@@ -1,16 +1,20 @@
+const user = "vampiro";
+const repo = "docs";
+const twitter = "SirRobertAuld";
+
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
+  title: "Rob's Stuff to Remember",
+  tagline: 'A list of development-related guides to get me going faster in the future.',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'vampiro', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+  organizationName: user,
+  projectName: repo,
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Rob Docs',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -24,7 +28,7 @@ module.exports = {
         },
         {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/vampiro/docs',
+          href: `https://github.com/${user}/${repo}`,
           label: 'GitHub',
           position: 'right',
         },
@@ -50,16 +54,8 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: `https://twitter.com/${twitter}`,
             },
           ],
         },
@@ -72,7 +68,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: `https://github.com/${user}`,
             },
           ],
         },
@@ -88,13 +84,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            `https://github.com/${user}/docs/edit/master/website/`,
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            `https://github.com/${user}/${repo}/edit/master/website/blog/`,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
