@@ -2,7 +2,7 @@ module.exports = {
   title: 'My Site',
   tagline: 'The tagline of my site',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -24,7 +24,7 @@ module.exports = {
         },
         {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/vampiro/docs',
           label: 'GitHub',
           position: 'right',
         },
