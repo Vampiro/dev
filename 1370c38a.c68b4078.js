@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{73:function(o){o.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"https://vampiro.github.io/docs/blog/welcome"},{"title":"Hello","permalink":"https://vampiro.github.io/docs/blog/hello-world"},{"title":"Hola","permalink":"https://vampiro.github.io/docs/blog/hola"}]}')}}]);
