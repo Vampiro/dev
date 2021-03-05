@@ -44,7 +44,13 @@ function createWindow() {
     },
   });
 
+  // remove top menu (File, Edit, View, etc.)
   win.removeMenu();
+
+  // Open the DevTools.
+  if (isDev) {
+    win.webContents.openDevTools({ mode: "detach" });
+  }
 
   // and load the index.html of the app.
   // win.loadFile("index.html");
@@ -89,9 +95,11 @@ app.on("activate", () => {
 // code. You can also put them in separate files and require them here.
 ```
 
-Add these lines to your `package.json`
+Add these lines to your `package.json`. Fill in the `author` and `description` fields.
 
 ```json
+"author": "",
+"description": "",
 "main": "public/electron.js",
 "homepage": "./",
 ```
@@ -100,7 +108,7 @@ Add these lines to the `scripts` section of your `package.json`
 
 ```json
 "dev": "concurrently -k \"cross-env BROWSER=none npm start\" \"npm:electron\"",
-"electron": "wait-on tcp:3000 && electron ."
+"electron": "wait-on tcp:3000 && electron-forge start",
 ```
 
 Run the following. It will add some `dev-dependencies` for building, a couple of `scripts` in `package.json`, and an Electron-Forge config in `package.json`.
@@ -109,10 +117,21 @@ Run the following. It will add some `dev-dependencies` for building, a couple of
 npx @electron-forge/cli import
 ```
 
-This changes the `start` script in `package.json`. Change `start` back to this:
+This changes the `start` script in `package.json`. Within the `scripts` in `package.json`, change `start`, `package`, and `make` to the following:
 
 ```json
 "start": "react-scripts start",
+"package": "react-scripts build && electron-forge package",
+"make": "react-scripts build && electron-forge make"
+```
+
+Add `/out` to your `.gitignore` if it isn't already there.
+
+In `package.json` there should be a `config.forge.packagerConfig` object. Add the following to `packagerConfig`.
+
+```json
+"asar": true,
+"name": "YOUR APP NAME"
 ```
 
 At this point if you run your app in Electron in dev mode with:
@@ -128,3 +147,15 @@ rm -rf node_modules
 npm install
 npm run dev
 ```
+
+To package your application so that it can be executed run:
+
+```bash
+npm run make
+```
+
+Your built app should be in the `out` directory e.g. `out/MY APP-win32-x64/MY APP.exe`
+
+Next Steps
+
+- Custom Icons (docs here: https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e)

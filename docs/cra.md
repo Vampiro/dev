@@ -1,10 +1,10 @@
 ---
 id: cra
-title: Create React App
+title: Create App
 slug: /
 ---
 
-## Create your app
+## Create React App
 
 Run [create-react-app](https://create-react-app.dev/docs/adding-typescript/), substitute `my-app` for your app name.
 
@@ -32,5 +32,45 @@ Add the following to `package.json`
   "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
     "prettier --write"
   ]
+}
+```
+
+## React Router
+
+Install the following packages.
+
+```bash
+npm install react-router-dom @types/react-router-dom
+```
+
+You could now paste/use the following in `App.tsx`. You will make your own `Page` components - this is only an example of where to start with the Router.
+
+```jsx
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
+        <Switch>
+          <Route exact path="/">
+            <div>Home Page</div>
+          </Route>
+          <Route path="/about">
+            <div>About Page</div>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 ```
