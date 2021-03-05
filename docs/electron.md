@@ -37,12 +37,14 @@ if (require("electron-squirrel-startup")) {
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1600,
+    height: 900,
     webPreferences: {
       nodeIntegration: true,
     },
   });
+
+  win.removeMenu();
 
   // and load the index.html of the app.
   // win.loadFile("index.html");
