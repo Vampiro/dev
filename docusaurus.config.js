@@ -1,5 +1,5 @@
 const user = "vampiro";
-const repo = "docs";
+const repo = "dev";
 const twitter = "SirRobertAuld";
 
 module.exports = {
