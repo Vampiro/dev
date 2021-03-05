@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[23],{95:function(o){o.exports=JSON.parse('{"allTagsPath":"https://vampiro.github.io/docs/blog/tags","slug":"hello","name":"hello","count":2,"permalink":"https://vampiro.github.io/docs/blog/tags/hello"}')}}]);
