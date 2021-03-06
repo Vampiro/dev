@@ -138,7 +138,7 @@ In `package.json` there should be a `config.forge.packagerConfig` object. Add th
 
 ## Running in Dev Mode
 
-At this point if you run your app in Electron in dev mode with:
+At this point you can run your app in Electron in dev mode with:
 
 ```bash
 npm run dev
