@@ -3,7 +3,7 @@ id: electron
 title: Electron w/ CRA
 ---
 
-Instructions from [this post](https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e).
+Instructions from [this post](https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e) as well as random GitHub/StackOverflow posts.
 
 ## Setup
 
