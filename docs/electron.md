@@ -121,8 +121,8 @@ This changes the `start` script in `package.json`. Within the `scripts` in `pack
 
 ```json
 "start": "react-scripts start",
-"package": "react-scripts build && electron-forge package",
-"make": "react-scripts build && electron-forge make"
+"package": "npm run build && electron-forge package",
+"make": "npm run build && electron-forge make"
 ```
 
 Add `/out` to your `.gitignore` if it isn't already there.
