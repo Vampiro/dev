@@ -5,6 +5,8 @@ title: Electron w/ CRA
 
 Instructions from [this post](https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e).
 
+## Setup
+
 Install the following packages within your React app.
 
 ```
@@ -113,7 +115,7 @@ Add these lines to the `scripts` section of your `package.json`
 
 Run the following. It will add some `dev-dependencies` for building, a couple of `scripts` in `package.json`, and an Electron-Forge config in `package.json`.
 
-```sh
+```bash
 npx @electron-forge/cli import
 ```
 
@@ -134,9 +136,11 @@ In `package.json` there should be a `config.forge.packagerConfig` object. Add th
 "name": "YOUR APP NAME"
 ```
 
+## Running in Dev Mode
+
 At this point if you run your app in Electron in dev mode with:
 
-```
+```bash
 npm run dev
 ```
 
@@ -148,6 +152,8 @@ npm install
 npm run dev
 ```
 
+## Production Build
+
 To package your application so that it can be executed run:
 
 ```bash
@@ -156,6 +162,6 @@ npm run make
 
 Your built app should be in the `out` directory e.g. `out/MY APP-win32-x64/MY APP.exe`
 
-Next Steps
+## Next Steps
 
 - Custom Icons (docs here: https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e)
