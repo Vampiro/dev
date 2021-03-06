@@ -3,7 +3,7 @@ id: electron
 title: Electron w/ CRA
 ---
 
-Instructions from [this post](https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e) as well as random GitHub/StackOverflow posts.
+This quick start guide will show you how to add Electron into an existing app created with `create-react-app`. Some of these instructions are from [this post](https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e). I've updated the instructions for Electron v12.0.0 and added some additional steps for usage.
 
 ## Setup
 
@@ -162,11 +162,9 @@ npm run make
 
 Your built app should be in the `out` directory e.g. `out/MY APP-win32-x64/MY APP.exe`
 
-## Accessing the Electron Process's Stuff
+## Accessing the Filesystem in Electron
 
-If you want access to things like the filesystem from within your React code in CRA, you're going to have to do some extra work. Keep in mind that if you want to support web and desktop versions of your app in one code-base, you're going to have to add some extra conditional logic to detect if you're in Electron or not at run-time or build separate apps with a common base.
-
-Install the following package. This allows you to somewhat edit the webpack config without requiring you to `eject`.
+If you want access to things like the filesystem from within your React code in CRA, you're going to have to do some extra work. Install the following package. This allows you to somewhat edit the webpack config without requiring you to `eject`.
 
 ```bash
 npm install @craco/craco
@@ -184,12 +182,15 @@ module.exports = {
 };
 ```
 
-Change the following scripts in your `package.json`:
+Change/add the following `scripts` in your `package.json`:
 
 ```json
-"start": "craco start",
-"build": "craco build",
-"test": "craco test",
+"electron-start": "craco start",
+"electron-build": "craco build",
+"electron-test": "craco test",
+"dev": "concurrently -k \"cross-env BROWSER=none npm run electron-start\" \"npm:electron\"",
+"package": "npm run electron-build && electron-forge package",
+"make": "npm run electron-build && electron-forge make"
 ```
 
 In your `public/electron.js` file, ensure that the `BrowserWindow` that gets created contains the following (specifically the `webPreferences` settings):
@@ -206,33 +207,36 @@ const win = new BrowserWindow({
 });
 ```
 
-You can now have a component that has access to things on the filesystem.
+If you want to support both web and desktop versions and you want to distinguish whether you're running in Electron vs. the web at run-time so you can turn certain features off, install the following package.
+
+```bash
+npm install "is-electron"
+```
+
+You can now have a component that has access to things on the filesystem. [Here's](https://github.com/electron/electron/blob/v1.1.0/docs/api/app.md#appgetpathname) a list of paths available to you.
 
 ```jsx
-const { remote } = require("electron");
-// const fs = remote.require("fs");
-// const path = remote.require("path");
-const { app } = remote;
+import isElectron from "is-electron";
 
-// list of paths here: https://github.com/electron/electron/blob/v1.1.0/docs/api/app.md#appgetpathname
 export default function DirectoryPaths() {
-  return (
-    <div>
-      <div>User Home Directory: {app.getPath("home")}</div>
-      <div>App Directory: {app.getPath("appData")}</div>
-      <div>User Data Directory: {app.getPath("userData")}</div>
-      <div>User Desktop: {app.getPath("desktop")}</div>
-    </div>
-  );
+  if (isElectron()) {
+    const { remote } = require("electron");
+    const { app } = remote;
+    return (
+      <div>
+        <div>This is running in Electron!</div>
+        <div>User Home Directory: {app.getPath("home")}</div>
+        <div>App Directory: {app.getPath("appData")}</div>
+        <div>User Data Directory: {app.getPath("userData")}</div>
+        <div>User Desktop: {app.getPath("desktop")}</div>
+      </div>
+    );
+  }
+
+  return <div>This is not running in Electron :-(</div>;
 }
 ```
 
 ## Next Steps
 
 - Custom Icons (docs here: https://dev.to/mandiwise/electron-apps-made-easy-with-create-react-app-and-electron-forge-560e)
-
-## Resources
-
-### Detect if Running in Electron
-
-- https://github.com/cheton/is-electron
