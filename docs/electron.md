@@ -10,8 +10,8 @@ Instructions from [this post](https://dev.to/mandiwise/electron-apps-made-easy-w
 Install the following packages within your React app.
 
 ```
-npm i electron-is-dev
-npm i -D concurrently cross-env electron electron-devtools-installer wait-on
+npm i electron-is-dev@2.0.0
+npm i -D concurrently cross-env electron@12.0.0 electron-devtools-installer@3.1.1 wait-on
 ```
 
 Add the following to `public/electron.js`
@@ -164,7 +164,7 @@ Your built app should be in the `out` directory e.g. `out/MY APP-win32-x64/MY AP
 
 ## Accessing the Electron Process's Stuff
 
-If you want access to things like the filesystem from within your React code in CRA, you're going to have to do some extra work. Do keep in mind the security risks with this as when you're running from a web-server, you wouldn't may want to control things differently than when they're running the app locally.
+If you want access to things like the filesystem from within your React code in CRA, you're going to have to do some extra work. Do keep in mind the security risks with this as giving the user control over the filesystem might not be as great when they're running from a web server vs. locally.
 
 Install the following package. This allows you to somewhat edit the webpack config without requiring you to `eject`.
 
