@@ -51,7 +51,9 @@ function createWindow() {
 
   // Open the DevTools.
   if (isDev) {
-    win.webContents.openDevTools({ mode: "detach" });
+    win.webContents.once("dom-ready", () => {
+      win.webContents.openDevTools({ mode: "detach" });
+    });
   }
 
   // and load the index.html of the app.
