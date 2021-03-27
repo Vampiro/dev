@@ -1,6 +1,6 @@
 # Random docs of things I need to remember
 
-Can be viewed at: https://vampiro.github.io/dev/
+Can be viewed at: https://vampiro.github.io/dev/docs/
 
 ## Docusaurus
 
