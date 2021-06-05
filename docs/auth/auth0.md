@@ -31,3 +31,47 @@ REACT_APP_AUTH0_DOMAIN=YOUR_AUTH0_DOMAIN
 These will be set at dev/build time so ensure you fill in correct values at the various points in development/deployment.
 
 - At this point in your React app, you can follow [these Auth0/React instructions](https://auth0.com/docs/quickstart/spa/react/01-login). Or, if you're Robbie, you can look at one of your React projects where you've implemented authentication with Auth0/React and copy the components out of there.
+
+## Server Side
+
+### JWT Authentication (with Koa)
+
+Have the following environment variables available.
+
+```bash
+AUTH0_AUDIENCE=AUTH0_API_AUDIENCE
+AUTH0_CLIENT_ID=AUTH0_APP_CLIENT_ID
+AUTH0_DOMAIN=AUTH0_APP_DOMAIN
+```
+
+Install the following packages. Note: I am using Koa, Express has its own version of `koa-jwt`.
+
+Create `src/auth.ts`.
+
+```ts
+import jwt from "koa-jwt";
+import * as jwksRsa from "jwks-rsa";
+
+/**
+ * Can be used as middleware in Koa to validate the user's JWT against Auth0.
+ */
+export const validateJwt = jwt({
+  secret: jwksRsa.koaJwtSecret({
+    jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`,
+  }),
+
+  audience: process.env.AUTH0_AUDIENCE,
+  issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+  algorithms: ["RS256"],
+});
+```
+
+In your `app.ts` file, you can now use the `validateJwt` middleware in front of the endpoints you want kept behind authentication.
+
+```ts
+router.use(validateJwt);
+
+router.get("/secret", (ctx: Koa.Context) => {
+  ctx.body = "Super secret!!";
+});
+```

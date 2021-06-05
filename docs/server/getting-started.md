@@ -14,5 +14,6 @@ Select "basic". This will create a project with some of the necessary tooling.
 - Edit license as needed.
 - If you don't use `yarn`, delete `yarn.lock` and run `npm install` to generate the `package-lock.json`.
 - Run `git init` to initialize the git repo.
+- Update the `Prettier` settings in `package.json` to your liking.
 
 At this point, you should commit the files and then pick a server library to work with.
