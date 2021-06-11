@@ -46,7 +46,6 @@ npm install react-router-dom @types/react-router-dom
 You could now paste/use the following in `App.tsx`. You will make your own `Page` components - this is only an example of where to start with the Router.
 
 ```jsx
-import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function App() {
