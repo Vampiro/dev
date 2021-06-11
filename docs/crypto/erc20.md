@@ -27,3 +27,6 @@ Explanation of each method:
 - You cannot get "existing" keys for a mapping. You'd have to store them separately.
 - `public` contract variables automatically have a getter created for them, but not a setter.
 - When a `require` condition is not met, all prior transactions are undone.
+- Useful variables available in Solidity
+  - msg.sender: The address of the sender of the whatever function is being executed.
+  - block.timestamp: The current block timestamp as seconds since unix epoch.

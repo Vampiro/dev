@@ -9,7 +9,7 @@ slug: /
 Run [create-react-app](https://create-react-app.dev/docs/adding-typescript/), substitute `my-app` for your app name.
 
 ```bash
-npx create-react-app my-app --template typescript
+npx create-react-app my-app --template typescript --use-npm
 ```
 
 ## Prettier
