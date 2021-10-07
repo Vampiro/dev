@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{82:function(a){a.exports=JSON.parse('{"allTagsPath":"/dev/blog/tags","slug":"nextjs-fauna-auth-0","name":"nextjs-fauna-auth0","count":1,"permalink":"/dev/blog/tags/nextjs-fauna-auth-0"}')}}]);

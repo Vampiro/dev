@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{84:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Next.js with Auth0 and Fauna","permalink":"/dev/blog/2021/10/03/nextjs"},{"title":"Hello World","permalink":"/dev/blog/2021/03/05/hello-world"}]}')}}]);
